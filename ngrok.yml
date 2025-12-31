@@ -4,4 +4,4 @@ tunnels:
     n8n:
         proto: http
         addr: open_notebook:8502
-        domain: sbansal6-open-notebook.ngrok-free.app
+        domain: sbansalvpc-notebook.ngrok.app
