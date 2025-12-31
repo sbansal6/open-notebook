@@ -8,14 +8,14 @@ services:
     ports:
       - "8000:8000"
     networks:
-      - open-network  
+      - n8n-network
     command: start --log info --user root --pass root rocksdb:/mydata/mydatabase.db
     pull_policy: always
     user: root
     restart: always
     
   ngrok:
-    container_name: ngroknotebook
+    container_name: ngrok-notebook
     image: ngrok/ngrok:latest
     ports:
       - "4041:4040"
@@ -27,7 +27,7 @@ services:
       - "--config"
       - "/etc/ngrok.yml"
     networks:
-      - open-network
+      - n8n-network
     volumes:
       - ./ngrok.yml:/etc/ngrok.yml
       
@@ -37,7 +37,7 @@ services:
       - "8502:8502"
       - "5055:5055"
     networks:
-      - open-network  
+      - n8n-network
     depends_on:
       - surrealdb
     volumes:
@@ -45,6 +45,6 @@ services:
     restart: always
     
 networks:
-  open-network:
+  n8n-network:
     driver: bridge
     
